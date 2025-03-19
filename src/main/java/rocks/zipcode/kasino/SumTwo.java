@@ -110,6 +110,8 @@ public class SumTwo implements SumItUp, GameInterface {
                     totalAdjust -= bet;
                 }
         }
+        theHouse.tellUser("You won/lost");
+        theHouse.tellUser(String.format("%.2f dollars", totalAdjust));
         return totalAdjust;
     }
 
@@ -143,8 +145,6 @@ public class SumTwo implements SumItUp, GameInterface {
                 theHouse.tellUser("The roll was "+rollResult);
                 // win or lose
                 Double netWinLoss = this.totalBetAdjust(rollResult);
-                theHouse.tellUser("You won/lost");
-                theHouse.tellUser(String.format("%.2f dollars", netWinLoss));
                 // modify the player account
                 player.getAccount().deposit(netWinLoss);
                 // clear the bets
