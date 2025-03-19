@@ -1,11 +1,11 @@
 package rocks.zipcode.kasino;
 
-public class CasinoAccount {
+public class Wallet {
 
     private double balance;
     private String accountId;
 
-    public CasinoAccount(double initialBalance, String accountId) {
+    public Wallet(double initialBalance, String accountId) {
         this.balance = initialBalance;
         this.accountId = accountId;
     }

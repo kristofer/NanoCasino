@@ -10,6 +10,7 @@ public class Casino {
 
     private final Scanner scanner = new Scanner(System.in);
 
+    // I only have One game for this version
     private final List<GameInterface> availableGames;
     private final List<PlayerInterface> registeredPlayers;
 
@@ -77,6 +78,7 @@ public class Casino {
          }
     }
 
+    // this is a simolest interactive test for this class. Not used for the real 'project'
     public static void main(String[] args) {
         new Casino().run();
     }

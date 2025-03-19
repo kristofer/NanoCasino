@@ -1,12 +1,12 @@
 package rocks.zipcode.kasino;
 
 public class SimplePlayer implements PlayerInterface{
-    String name = "";
-    CasinoAccount wallet;
+    String name = "PlayerOne";
+    Wallet wallet = null;
 
     public SimplePlayer(String name) {
         name = name;
-        wallet = new CasinoAccount(500.0, name);
+        wallet = new Wallet(500.0, name);
     }
     @Override
     public String getName() {
@@ -14,12 +14,12 @@ public class SimplePlayer implements PlayerInterface{
     }
 
     @Override
-    public CasinoAccount getAccount() {
+    public Wallet getAccount() {
         return this.wallet;
     }
 
     @Override
-    public void setAccount(CasinoAccount account) {
+    public void setAccount(Wallet account) {
         this.wallet = account;
     }
 

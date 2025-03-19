@@ -8,6 +8,11 @@ import static rocks.zipcode.kasino.SumItUp.BetType.*;
 // my game
 public class SumTwo implements SumItUp, GameInterface {
 
+
+    static class SumTwoEnded extends Exception {
+        // thrown at the end of the SumTwo game.
+    }
+
     PlayerInterface player;
     Casino theHouse;
 
