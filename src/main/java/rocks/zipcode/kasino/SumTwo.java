@@ -47,6 +47,7 @@ public class SumTwo implements SumItUp, GameInterface {
         currentBets.put(betType, amount);
         return true;
     }
+
     private boolean askForBet() throws SumTwoEnded {
         throw new SumTwoEnded();
         //return true;

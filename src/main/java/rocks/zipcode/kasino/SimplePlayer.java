@@ -1,8 +1,8 @@
 package rocks.zipcode.kasino;
 
-public class SimplePlayer implements PlayerInterface{
-    String name = "PlayerOne";
-    Wallet wallet = null;
+public class SimplePlayer implements PlayerInterface {
+    private String name = "PlayerOne";
+    private Wallet wallet = null;
 
     public SimplePlayer(String name) {
         name = name;
