@@ -26,13 +26,12 @@ public class TwoCard implements GameInterface {
         this.deck.shuffle();
     }
 
+    @Override
     public void play() {
-        // welcome to TwoCard
-        // the dealer will deal two cards to you and two cards to the house.
-        // you can see both of the house cards.
-        // you can see both of your own cards.
-        // you win if the sum of your two cards is higher than the sum of the dealer's two cards.
-        // good luck!
+        theHouse.tellUser("welcome to TwoCardStud\n");
+        theHouse.tellUser("the dealer will deal two cards to you and two cards to the house.\n");
+        theHouse.tellUser("you win if the sum of your two cards is higher than the sum of the dealer's two cards.\n");
+        theHouse.tellUser("good luck!\n\n");
         while (true) {
             deal();
             // show the player their cards
@@ -56,7 +55,7 @@ public class TwoCard implements GameInterface {
             }
             playerhand.clear();
             dealerhand.clear();
-            
+
         }
     }
 
