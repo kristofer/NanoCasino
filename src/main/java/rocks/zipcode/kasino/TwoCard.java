@@ -8,7 +8,7 @@ import rocks.zipcode.kasino.cards.Hand;
 // the player can see both of the house cards.
 // the player can see both of their own cards.
 // the player wins if the sum of the player's two cards is higher than the dum of the dealer's two cards.
-public class TwoCard {
+public class TwoCard implements GameInterface {
     
 
     private Hand playerhand;
@@ -26,7 +26,7 @@ public class TwoCard {
         this.deck.shuffle();
     }
 
-    public boolean play() {
+    public void play() {
         // welcome to TwoCard
         // the dealer will deal two cards to you and two cards to the house.
         // you can see both of the house cards.
@@ -36,8 +36,8 @@ public class TwoCard {
         while (true) {
             deal();
             // show the player their cards
-            theHouse.tellUser("Your Hand "+playerhand.showHand());
-            theHouse.tellUser("Dealer    "+dealerhand.showHand());
+            theHouse.tellUser("Your Hand: ["+playerhand.showHand()+"]");
+            theHouse.tellUser("Dealer   : ["+dealerhand.showHand()+"]");
             // show the player the sum of their cards
             theHouse.tellUser("Your sum is: " + playerhand.getSumOfCards());
             // show the player the sum of the dealer's cards
@@ -54,8 +54,10 @@ public class TwoCard {
             if (!playAgain()) {
                 break;
             }
-        }   
-        return true;
+            playerhand.clear();
+            dealerhand.clear();
+            
+        }
     }
 
     public boolean playerWins(Hand playerhand, Hand dealerhand) {
@@ -75,6 +77,30 @@ public class TwoCard {
     private boolean playAgain() {
         String resp = theHouse.promptUser("Do you wish to play again? (yes or no)");
         return resp.equalsIgnoreCase("yes");
+    }
+
+    @Override
+    public void addPlayer(PlayerInterface player) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addPlayer'");
+    }
+
+    @Override
+    public void removePlayer(PlayerInterface player) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removePlayer'");
+    }
+
+    @Override
+    public boolean isGambling() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isGambling'");
+    }
+
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
     }
 
 }

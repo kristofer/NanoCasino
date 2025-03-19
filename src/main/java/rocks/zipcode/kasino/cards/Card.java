@@ -35,7 +35,7 @@ public class Card {
 
     @Override
     public String toString(){
-        return suit.name()+ " of " +rank.name();
+        return rank.name()+ " of " +suit.name();
     }
 
     // ugly but works

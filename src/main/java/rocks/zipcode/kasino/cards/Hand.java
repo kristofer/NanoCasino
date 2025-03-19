@@ -39,9 +39,12 @@ public class Hand {
         StringBuilder sb = new StringBuilder();
         for (Card c : cards) {
             sb.append(c.toString());
-            sb.append(" ");
+            sb.append("; ");
         }
-        sb.append("\n");
         return sb.toString();
      }
+
+    public void clear() {
+        cards.clear();
+    }
 }

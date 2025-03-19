@@ -51,25 +51,33 @@ public class Casino {
         // Main casino interface logic
         // Make this is the only place where I/O to the user happens
         PlayerInterface currentPlayer = null;
+        GameInterface game = null;
+
         // this would be the main loop
          while (true) {
              System.out.println("Welcome to the casino!");
              System.out.println("1. Play SumTwo"); // how would you add multiple games?
-             System.out.println("2. Register a player");
-             System.out.println("3. Exit");
+             System.out.println("2. Play TwoCardStud"); // how would you add multiple games?
+             System.out.println("3. Register a player");
+             System.out.println("4. Exit");
              System.out.print("Enter your choice: ");
              String choice = scanner.nextLine();
 
              switch (choice) {
                  case "1":
                      if (currentPlayer == null) currentPlayer = registerPlayer();
-                     GameInterface game = new SumTwo(this, currentPlayer);
+                     game = new SumTwo(this, currentPlayer);
                      game.play(); // how would you add multiple games?
                      break;
-                 case "2":
-                     currentPlayer = registerPlayer();
+                case "2":
+                     if (currentPlayer == null) currentPlayer = registerPlayer();
+                     game = new TwoCard(this, currentPlayer);
+                     game.play(); // how would you add multiple games?
                      break;
                  case "3":
+                     currentPlayer = registerPlayer();
+                     break;
+                 case "4":
                      System.out.println("Thank you for playing!");
                      System.exit(0);
                  default:
