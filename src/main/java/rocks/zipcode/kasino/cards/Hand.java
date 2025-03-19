@@ -1,7 +1,6 @@
 package rocks.zipcode.kasino.cards;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Hand {
@@ -27,4 +26,22 @@ public class Hand {
             return null;
         }
     }
+
+    public int getSumOfCards() {
+        int sum = 0;
+        for (Card c : cards) {
+            sum += c.cardValue(c);
+        }
+        return sum;
+    }
+
+    public String showHand() {
+        StringBuilder sb = new StringBuilder();
+        for (Card c : cards) {
+            sb.append(c.toString());
+            sb.append(" ");
+        }
+        sb.append("\n");
+        return sb.toString();
+     }
 }
