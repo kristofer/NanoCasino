@@ -164,7 +164,7 @@ public class SumTwo implements SumItUp, GameInterface {
 
     @Override
     public double getOdds(BetType betType) {
-        return 0;
+        return odds.get(betType);
     }
 
     @Override
