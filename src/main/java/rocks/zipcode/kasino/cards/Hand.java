@@ -41,6 +41,12 @@ public class Hand {
             sb.append(c.toString());
             sb.append("; ");
         }
+        
+        for (Card c : cards) {
+            sb.append(c.toCard());
+            sb.append(" ");
+        }
+        
         return sb.toString();
      }
 

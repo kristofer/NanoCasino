@@ -38,6 +38,37 @@ public class Casino {
     public void tellUser(String message) {
         System.out.println(message);
     }
+    public void wasteTime(int secs) {
+        long durationMillis = secs * 1000;
+        char[] twirl = {'/', '-', '\\', '|'};
+        long endTime = System.currentTimeMillis() + durationMillis;
+    
+        int idx = 0;
+        while (System.currentTimeMillis() < endTime) {
+            System.out.print("\r" + twirl[idx]); // \r moves the cursor back to the start of the line
+            idx = (idx + 1) % twirl.length; // Cycle through the twirl array
+            try {
+                Thread.sleep(100); // Adjust delay for speed (100ms per frame)
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // Restore interrupted status
+                break;
+            }
+        }
+        System.out.print("\r \n"); // Clear the line after animation
+            // try {
+        //     for (int idx = secs; idx > 0; idx--) {
+        //         System.out.print("\\");
+        //         Thread.sleep(300);
+        //         System.out.print("|");
+        //         Thread.sleep(300);
+        //         System.out.print("/");
+        //         Thread.sleep(300);
+        //     }
+        //     System.out.println();
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
+    }
 
     public PlayerInterface registerPlayer() {
         String user = promptUser("What is your name? ");
@@ -56,28 +87,34 @@ public class Casino {
         // this would be the main loop
          while (true) {
              System.out.println("Welcome to the casino!");
-             System.out.println("1. Play SumTwo"); // how would you add multiple games?
-             System.out.println("2. Play TwoCardStud"); // how would you add multiple games?
-             System.out.println("3. Register a player");
-             System.out.println("4. Exit");
+             System.out.println("1. Register a player");
+             System.out.println("2. Play SumTwo"); // how would you add multiple games?
+             System.out.println("3. Play TwoCardStud"); // how would you add multiple games?
+             System.out.println("4. Play CoinFlip"); // how would you add multiple games?
+             System.out.println("5. Exit");
              System.out.print("Enter your choice: ");
              String choice = scanner.nextLine();
 
              switch (choice) {
-                 case "1":
+                 case "2":
                      if (currentPlayer == null) currentPlayer = registerPlayer();
                      game = new SumTwo(this, currentPlayer);
                      game.play(); // how would you add multiple games?
                      break;
-                case "2":
+                case "3":
                      if (currentPlayer == null) currentPlayer = registerPlayer();
                      game = new TwoCard(this, currentPlayer);
                      game.play(); // how would you add multiple games?
                      break;
-                 case "3":
+                case "4":
+                     if (currentPlayer == null) currentPlayer = registerPlayer();
+                     game = new CoinFlip(this, currentPlayer);
+                     game.play(); // how would you add multiple games?
+                     break;
+                 case "1":
                      currentPlayer = registerPlayer();
                      break;
-                 case "4":
+                 case "5":
                      System.out.println("Thank you for playing!");
                      System.exit(0);
                  default:
