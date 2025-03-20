@@ -55,19 +55,6 @@ public class Casino {
             }
         }
         System.out.print("\r \n"); // Clear the line after animation
-            // try {
-        //     for (int idx = secs; idx > 0; idx--) {
-        //         System.out.print("\\");
-        //         Thread.sleep(300);
-        //         System.out.print("|");
-        //         Thread.sleep(300);
-        //         System.out.print("/");
-        //         Thread.sleep(300);
-        //     }
-        //     System.out.println();
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
     }
 
     public PlayerInterface registerPlayer() {
@@ -78,6 +65,12 @@ public class Casino {
         return newPlayer;
     }
 
+    public void reportWallet(PlayerInterface player) {
+        if (player != null) {
+            tellUser(String.format("You have $%.2f\n", player.getAccount().getBalance()));
+        }
+    }
+
     public void run() {
         // Main casino interface logic
         // Make this is the only place where I/O to the user happens
@@ -86,7 +79,9 @@ public class Casino {
 
         // this would be the main loop
          while (true) {
-             System.out.println("Welcome to the casino!");
+             System.out.println("Welcome to the BINARY casino!");
+             System.out.println("where every game is a power of Two!!");
+             reportWallet(currentPlayer);
              System.out.println("1. Register a player");
              System.out.println("2. Play SumTwo"); // how would you add multiple games?
              System.out.println("3. Play TwoCardStud"); // how would you add multiple games?

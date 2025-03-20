@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static rocks.zipcode.kasino.SumItUp.BetType.*;
+import static rocks.zipcode.kasino.SumItUp.BetType.EVEN;
+import static rocks.zipcode.kasino.SumItUp.BetType.EXACTLY_SEVEN;
+import static rocks.zipcode.kasino.SumItUp.BetType.ODD;
+import static rocks.zipcode.kasino.SumItUp.BetType.OVER_SEVEN;
+import static rocks.zipcode.kasino.SumItUp.BetType.UNDER_SEVEN;
 
 // my game
 public class SumTwo implements SumItUp, GameInterface {
@@ -49,15 +53,53 @@ public class SumTwo implements SumItUp, GameInterface {
     }
 
     private boolean askForBet() throws SumTwoEnded {
-        throw new SumTwoEnded();
-        //return true;
+        BetType bet = this.askForBetType();
+        Double amt = this.askForBetAmount();
+        return placeBet(player.getName(), bet, amt);        //return true;
     }
 
     private BetType askForBetType() throws SumTwoEnded {
-        return null;
+        while (true) {
+            theHouse.tellUser("Place a bet on one of the following:");
+            theHouse.tellUser("1. Even");
+            theHouse.tellUser("2. Odd");
+            theHouse.tellUser("3. Exactly 7:0");
+            theHouse.tellUser("4. Over 7");
+            theHouse.tellUser("5. Under 7");
+            String answer = theHouse.promptUser("Enter your choice: ");
+            switch (answer) {
+                case "1":
+                    return EVEN;
+                case "2":
+                    return ODD;
+                case "3":
+                    return EXACTLY_SEVEN;
+                case "4":
+                    return OVER_SEVEN;
+                case "5":
+                    return UNDER_SEVEN;
+                case "quit":
+                    throw new SumTwoEnded();
+            }
+            theHouse.tellUser("Invalid choice. Please try again.");
+        }   
     }
     private Double askForBetAmount() {
-        return 0.0;
+        while (true) {
+            String answer = theHouse.promptUser("Enter your bet amount: ");
+            try {
+                Double amt = Double.parseDouble(answer);
+                if (amt > 0) {
+                    if (player.getAccount().getBalance() < amt) {
+                        theHouse.tellUser("Insufficient funds. Please try again.");
+                    } else {
+                        return amt;
+                    }
+                }
+            } catch (NumberFormatException e) {
+                theHouse.tellUser("Invalid amount. Please try again.");
+            }
+        }
     }
 
     private int RollOne() {
@@ -138,8 +180,10 @@ public class SumTwo implements SumItUp, GameInterface {
             try {
                 //boolean b = askForBet();
                 /* for now, place a simple bet each time */
-                this.placeBet(player.getName(), EXACTLY_SEVEN, 5.0);
-                this.placeBet(player.getName(), ODD, 2.0);
+                boolean betok = askForBet();
+                if (!betok) {
+                    throw new SumTwoEnded();
+                }
                 // throw dice
                 int rollResult = this.rollDice();
                 theHouse.tellUser("The roll was "+rollResult);

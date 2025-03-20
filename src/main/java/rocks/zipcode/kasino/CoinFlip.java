@@ -15,7 +15,7 @@ public class CoinFlip implements GameInterface {
             // flip the coin
             boolean heads = flipCoin();
             theHouse.tellUser("Flipping the coin...");
-            theHouse.wasteTime(5);
+            theHouse.wasteTime(3);
             theHouse.tellUser("The coin landed on " + (heads ? "HEADS" : "TAILS"));
             // declare the winner
             if (heads) {
@@ -30,7 +30,7 @@ public class CoinFlip implements GameInterface {
         }
     }
 
-    private boolean flipCoin() {
+    boolean flipCoin() {
         return Math.random() < 0.5;
     }
 
