@@ -223,9 +223,5 @@ public class SumTwo implements SumItUp, GameInterface {
     @Override
     public String getName() {
         return "SumTwo";
-//        if (player != null) {
-//            return player.getName();
-//        }
-//        return "No Player";
     }
 }
