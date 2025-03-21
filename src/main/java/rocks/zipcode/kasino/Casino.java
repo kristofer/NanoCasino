@@ -67,7 +67,7 @@ public class Casino {
 
     public void reportWallet(PlayerInterface player) {
         if (player != null) {
-            tellUser(String.format("You have $%.2f\n", player.getAccount().getBalance()));
+            tellUser(String.format("***\nYou have %s\n***\n", player.getAccount().balanceString()));
         }
     }
 

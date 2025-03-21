@@ -14,6 +14,11 @@ public class Wallet {
         return balance;
     }
 
+    public String balanceString() {
+        // return string of balance in dollars and cents
+        return String.format("$%.2f", this.balance);
+    }
+
     public void deposit(double amount) {
         this.balance += amount;
     }
