@@ -195,7 +195,7 @@ classDiagram
     PlayerInterface    <|..  SimplePlayer
 
     %% SumItUp owns BetType enum
-    SumItUp            +--   BetType
+    %% SumItUp            +--   BetType
 
     %% inner exception of SumTwo
     SumTwo             +--   SumTwoEnded
