@@ -198,11 +198,11 @@ classDiagram
     %% SumItUp            +--   BetType
 
     %% inner exception of SumTwo
-    SumTwo             +--   SumTwoEnded
+    SumTwo             <--   SumTwoEnded
 
     %% Card owns its enums
-    Card               +--   Rank
-    Card               +--   Suit
+    Card               <--   Rank
+    Card               <--   Suit
 
     %% associations
     SimplePlayer       -->   Wallet        : has account
